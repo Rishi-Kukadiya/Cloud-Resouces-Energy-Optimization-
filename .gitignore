@@ -1,0 +1,8 @@
+_pycache_/
+Charts
+fastStorage
+Models
+venv
+model_evaluation_matrix.csv
+processed_cloud_data.csv
+
