@@ -76,7 +76,6 @@ Located inside `Frontend/`.
 
    - Server listens on `http://localhost:8000`
    - WebSocket dashboard endpoint: `ws://localhost:8000/ws/dashboard`
-   - Mobile controller: http://localhost:8000/admin/controller
 
 
 ### 2) Frontend (React + Vite)
