@@ -175,3 +175,22 @@ Located inside `Frontend/`.
 - The simulation uses randomized values to mimic I/O and network traffic.
 - The cluster manager uses a simple rule-based scaling algorithm; it is meant as a demo, not a production autoscaler.
 - The project assumes the trained models exist under `models/` (the repository includes them). If you delete them, re-run `Traning_Pipline.py`.
+- `CloudeServer.py` currently loads models from `./Models/` (capital M), while artifacts are in `models/` by default. On Linux/macOS this is case-sensitive. Either rename the folder to `Models/`, adjust code to `./models/`, or create a symlink.
+- If model loading fails, the system uses a safe fallback energy estimate (`120 W`) and continues simulation, but prediction accuracy will be degraded.
+
+---
+
+## 🐞 Quick Troubleshooting (Saved Time)
+
+1. Verify model artifacts are present:
+   - `scaler.pkl`
+   - `rf_model.joblib`
+   - `lstm_model.h5`
+   - `meta_learner.joblib`
+2. Confirm `Server.py` can start without errors:
+   `python Server.py`
+3. Check frontend network config in `Frontend/src/App.jsx` if using separate hosts/ports:
+   - `API_BASE_URL`
+   - `WS_URL`
+4. If backend is not receiving living telemetry, restart the server and ensure at least one node is provisioned by startup event.
+
